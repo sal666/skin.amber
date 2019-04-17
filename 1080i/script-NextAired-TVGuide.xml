@@ -4,8 +4,35 @@
 		<include>DefaultBackground</include>
 		<include>Time</include>
 		<include>OpenClose</include>
+		
+		<control type="group">
+			<visible>!IsEmpty(Window(Home).Property(TVGuide.BackgroundFanart))</visible>
+			<include content="TVGuideFanart">
+				<param name="TVGuideDayID">200</param>
+			</include>
+			<include content="TVGuideFanart">
+				<param name="TVGuideDayID">201</param>
+			</include>
+			<include content="TVGuideFanart">
+				<param name="TVGuideDayID">202</param>
+			</include>
+			<include content="TVGuideFanart">
+				<param name="TVGuideDayID">203</param>
+			</include>
+			<include content="TVGuideFanart">
+				<param name="TVGuideDayID">204</param>
+			</include>
+			<include content="TVGuideFanart">
+				<param name="TVGuideDayID">205</param>
+			</include>
+			<include content="TVGuideFanart">
+				<param name="TVGuideDayID">206</param>
+			</include>
+		</control>
+			
 		<control type="group">
 			<control type="image" description="Left Menu background">
+                <colordiffuse>dfcebe9e</colordiffuse>
 				<left>60</left>
 				<top>60</top>
 				<width>412</width>
@@ -13,6 +40,7 @@
 				<texture border="45">dialogs/TinyDialog.png</texture>
 			</control>
 			<control type="image" description="2/2 Right Menu">
+                <colordiffuse>dfcebe9e</colordiffuse>
 				<left>462</left>
 				<top>60</top>
 				<width>1419</width>

@@ -68,7 +68,7 @@
 					<shadowcolor>Black</shadowcolor>
 				</control>
 				<control type="label" description="Chapter Info with Player info">
-					<visible>Player.ChapterCount + !VideoPlayer.Content(LiveTV)</visible>
+					<visible>Player.ChapterCount + !VideoPlayer.Content(livetv)</visible>
 					<left>30</left>
 					<top>70</top>
 					<height>30</height>

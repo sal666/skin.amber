@@ -88,13 +88,13 @@
 							<label>$LOCALIZE[206]</label>
 						</control>
 						<control type="button" id="604">
-							<visible>VideoPlayer.Content(LiveTV) + system.getbool(pvrplayback.signalquality)</visible>
+							<visible>VideoPlayer.Content(livetv) + system.getbool(pvrplayback.signalquality)</visible>
 							<width>180</width>
 							<height>48</height>
 							<align>center</align>
 							<aligny>center</aligny>
 							<font>InfoPlot</font>
-							<label>Signal</label>
+							<label>$LOCALIZE[19008]</label>
 						</control>
 					</control>
 				</control>

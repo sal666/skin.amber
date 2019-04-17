@@ -323,7 +323,7 @@
 					<width>$PARAM[labelwidth]</width>
 					<height>45</height>
 					<textoffsetx>24</textoffsetx>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<label>$PARAM[labeltext]</label>
 					<align>$PARAM[labelalign]</align>
 					<scroll>false</scroll>
@@ -333,7 +333,7 @@
 					<width>$PARAM[labelwidth]</width>
 					<height>45</height>
 					<textoffsetx>24</textoffsetx>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<textcolor>Highlight</textcolor>
 					<label>$PARAM[labeltext]</label>
 					<align>$PARAM[labelalign]</align>
@@ -378,7 +378,7 @@
 					<visible>!$PARAM[isFocused]</visible>
 					<width>$PARAM[labelwidth]</width>
 					<height>45</height>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<textoffsetx>24</textoffsetx>
 					<label>$PARAM[labeltext]</label>
 					<align>$PARAM[labelalign]</align>
@@ -388,7 +388,7 @@
 					<visible>$PARAM[isFocused]</visible>
 					<width>$PARAM[labelwidth]</width>
 					<height>45</height>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<textoffsetx>24</textoffsetx>
 					<textcolor>Black</textcolor>
 					<selectedcolor>Black</selectedcolor>
@@ -439,7 +439,7 @@
 					<left>$PARAM[bordersize]</left>
 					<width>$PARAM[textboxwidth]</width>
 					<height>64</height>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<label>$PARAM[labeltext]</label>
 					<align>$PARAM[labelalign]</align>
 					<aligny>center</aligny>
@@ -451,7 +451,7 @@
 					<left>$PARAM[bordersize]</left>
 					<width>$PARAM[textboxwidth]</width>
 					<height>64</height>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<textcolor>Black</textcolor>
 					<selectedcolor>Black</selectedcolor>
 					<shadowcolor></shadowcolor>
@@ -500,7 +500,7 @@
 					<visible>!$PARAM[isFocused]</visible>
 					<width>$PARAM[labelwidth]</width>
 					<height>35</height>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<textoffsetx>24</textoffsetx>
 					<label>$PARAM[labeltext1]</label>
 					<align>$PARAM[labelalign]</align>
@@ -512,7 +512,7 @@
 					<width>$PARAM[labelwidth]</width>
 					<height>35</height>
 					<textoffsetx>24</textoffsetx>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<label>$PARAM[labeltext2]</label>
 					<align>$PARAM[labelalign]</align>
 					<scroll>false</scroll>
@@ -521,7 +521,7 @@
 					<visible>$PARAM[isFocused]</visible>
 					<width>$PARAM[labelwidth]</width>
 					<height>35</height>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<textoffsetx>24</textoffsetx>
 					<textcolor>Black</textcolor>
 					<selectedcolor>Black</selectedcolor>
@@ -535,7 +535,7 @@
 					<top>34</top>
 					<width>$PARAM[labelwidth]</width>
 					<height>35</height>
-					<font>shelf_label</font>
+					<font>Shelf_Label</font>
 					<textoffsetx>24</textoffsetx>
 					<textcolor>Black</textcolor>
 					<selectedcolor>Black</selectedcolor>
@@ -556,7 +556,7 @@
 				<param name="iconwidth">232.5</param>
 				<param name="iconheight">326</param>
 				<param name="iconoffset">0</param>
-				<param name="iconimage">$INFO[ListItem.Thumb]</param>
+				<param name="iconimage">$INFO[ListItem.Icon]</param>
 				<param name="fallbackicon">DefaultActorPoster.png</param>
 				<param name="shadowoffset">8</param>
 				<param name="bordersizeLT">12</param>
@@ -884,7 +884,7 @@
 				<param name="bordersizeLT">12</param>
 				<param name="bordersizeRB">20</param>
 				<param name="overlaylabelvisibility">String.IsEqual(ListItem.DBType,episode)</param>
-				<param name="overlaylabel">[B]$INFO[ListItem.Season,$LOCALIZE[31954]]$INFO[ListItem.Episode,$LOCALIZE[31973]][/B]</param>
+				<param name="overlaylabel">[B]$VAR[SeasonEpisodeLabel][/B]</param>
 			</include>
 		</definition>
 	</include>
@@ -1011,7 +1011,7 @@
 			</itemlayout>
 			<focusedlayout height="410" width="232.5">
 				<include content="GenericActorIconBig">
-					<param name="isFocused">Control.HasFocus(50)</param>
+					<param name="isFocused">Control.HasFocus($PARAM[viewid])</param>
 				</include>
 			</focusedlayout>
 		</definition>
@@ -1208,7 +1208,7 @@
 	<include name="FooterInfo">
 		<control type="group" description="Media Info Lite">
 			<include>ContentFade</include>
-			<posy>967</posy>
+			<posy>937</posy>
 			<posx>390</posx>
 			<width>1140</width>
 			<control type="label" description="Title shadow">
@@ -1244,6 +1244,15 @@
 				<shadowcolor>Black</shadowcolor>
 				<label>$VAR[panelsubheading]</label>
 			</control>
+			<control type="label" description="Details2">
+				<visible>[Control.IsVisible(53) | [Control.IsVisible(56) + ![$EXP[56_FanartViewInfo]]]] + !String.IsEmpty(Window(Home).Property(NextAired.NextDate))</visible>
+				<posy>109</posy>
+                <width>1140</width>
+				<height>30</height>
+				<align>center</align>
+				<shadowcolor>Black</shadowcolor>
+				<label>$VAR[panelsubheading2]</label>
+			</control>            
 		</control>
 		<control type="grouplist" description="Left Flags">
 			<include>ContentFade</include>

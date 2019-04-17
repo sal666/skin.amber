@@ -4,6 +4,11 @@
 	<animation effect="fade" time="200">WindowOpen</animation>
 	<animation effect="fade" time="150">WindowClose</animation>
 	<controls>
+    
+    <!-- Next line adapted from MikeSiLVO -->
+    
+        <include condition="Skin.HasSetting(Enable.ExtendedInfo)">HiddenCast</include>
+    
 		<control type="image">
 			<width>1920</width>
 			<height>1080</height>
@@ -101,13 +106,17 @@
 						<item>
 							<label>$LOCALIZE[20339]:</label>
 							<label2>$INFO[ListItem.Director]</label2>
-							<onclick>SendClick(13)</onclick>
-							<visible>!String.IsEmpty(ListItem.Director)</visible>
+							<onclick condition="!Skin.HasSetting(Enable.ExtendedInfo)">SendClick(13)</onclick>
+			                <onclick condition="Skin.HasSetting(Enable.ExtendedInfo)">SetProperty(DirectorID,True)</onclick>
+			                <onclick condition="Skin.HasSetting(Enable.ExtendedInfo)">SetProperty(ActorName,$INFO[ListItem.Director])</onclick>
+			                <onclick condition="Skin.HasSetting(Enable.ExtendedInfo)">ActivateWindow(1121)</onclick>							
+                            <visible>!String.IsEmpty(ListItem.Director)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[20417]:</label>
 							<label2>$INFO[ListItem.Writer]</label2>
-							<onclick>noop</onclick>
+							<onclick condition="!Skin.HasSetting(Enable.ExtendedInfo)">noop</onclick>
+                            <onclick condition="Skin.HasSetting(Enable.ExtendedInfo)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Writer])</onclick>
 							<visible>!String.IsEmpty(ListItem.Writer)</visible>
 						</item>
 						<item>
@@ -163,6 +172,16 @@
 							<onclick>noop</onclick>
 							<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
 						</item>
+                        <item>
+                            <label>$LOCALIZE[292]:</label>
+							<label2>[UPPERCASE]$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ]$INFO[ListItem.Property(AudioLanguage.3), / ]$INFO[ListItem.Property(AudioLanguage.4), / ]$INFO[ListItem.Property(AudioLanguage.5), / ][/UPPERCASE]</label2>
+							<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+						</item>
+						<item>
+                            <label>$LOCALIZE[287]:</label>
+							<label2>[UPPERCASE]$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ]$INFO[ListItem.Property(SubtitleLanguage.3), / ]$INFO[ListItem.Property(SubtitleLanguage.4), / ]$INFO[ListItem.Property(SubtitleLanguage.5), / ][/UPPERCASE]</label2>
+							<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+						</item>                        
 						<item>
 							<label>$LOCALIZE[20457]:</label>
 							<label2>$INFO[ListItem.Set]</label2>
@@ -176,16 +195,16 @@
 							<visible>!String.IsEmpty(ListItem.Tag)</visible>
 						</item>
 						<item>
-							<label>$LOCALIZE[157]:</label>
+							<label>$LOCALIZE[126]:</label>
 							<label2>$INFO[ListItem.Status]</label2>
 							<onclick>noop</onclick>
 							<visible>!String.IsEmpty(ListItem.Status)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[573]:</label>
-							<label2>$INFO[ListItem.Path]</label2>
+							<label2>$INFO[ListItem.FolderPath]</label2>
 							<onclick>noop</onclick>
-							<visible>!String.IsEmpty(ListItem.Path)</visible>
+							<visible>!String.IsEmpty(ListItem.FolderPath)</visible>
 						</item>
 					</content>
 				</control>
@@ -198,7 +217,8 @@
 			<height>90</height>
 			<align>center</align>
 			<onup>9009</onup>
-			<ondown>50</ondown>
+			<ondown condition="!Skin.hasSetting(Enable.ExtendedInfo)">SetFocus(50)</ondown>
+			<ondown condition="Skin.hasSetting(Enable.ExtendedInfo)">SetFocus(90050)</ondown>            
 			<orientation>horizontal</orientation>
 			<itemgap>16</itemgap>
 			<control type="togglebutton" id="8" description="Play/browse to Show">
@@ -229,7 +249,17 @@
                 <onclick>Action(close)</onclick>
                 <onclick>RunScript(plugin.video.specialfeatures,listitem)</onclick>
                 <visible>Skin.HasSetting(Enable.SpecialFeatures) + String.IsEqual(Window(home).Property(SpecialFeatures.Visible),true)</visible>
-            </control>			
+            </control>
+            <control type="button" id="1228" description="Extended Info">
+                <visible>[Container.Content(movies) | Container.Content(tvshows)] + [Skin.HasSetting(Enable.ExtendedInfo) + System.HasAddon(script.extendedinfo)]</visible>
+                <height>90</height>
+                <width min="220">auto</width>
+                <font>Details</font>
+                <align>center</align>
+                <label>$LOCALIZE[32016]</label>
+                <onclick condition="Container.Content(movies)">RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[ListItem.DBID],name=$INFO[ListItem.Title])</onclick>
+                <onclick condition="Container.Content(tvshows)">RunScript(script.extendedinfo,info=extendedtvinfo,dbid=$INFO[ListItem.DBID],name=$INFO[ListItem.Title])</onclick>
+            </control>
 			<control type="button" id="299" description="Cinema">
 				<height>90</height>
 				<visible>System.HasAddon(script.cinemavision) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)]</visible>
@@ -296,23 +326,21 @@
                 <onclick condition="String.IsEqual(ListItem.DBType,musicvideo)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=musicvideo, dbid=$INFO[ListItem.DBID])</onclick>				
 			</control>			
 		</control>
-		<control type="list" id="50">
-			<visible>!Control.HasFocus(10)</visible>
-			<include>VisibleFadeEffectDelay</include>
+
+<!-- The use of two different cast panels, depending on whether ExtendedInfo is enabled in the skin has been adapted from MikeSiLVO's code.
+     Many thanks to him -->
+		
+        <control type="group">
 			<posx>700</posx>
 			<posy>640</posy>
 			<width>1180</width>
 			<height>410</height>
-			<onleft>50</onleft>
-			<onright>50</onright>
 			<onup>9000</onup>
-			<ondown>9000</ondown>
-			<scrolltime>200</scrolltime>
-			<orientation>horizontal</orientation>
-			<include content="ActorLayout">
-				<param name="viewid">50</param>
-			</include>
-		</control>
+            <ondown>noop</ondown>
+			<include condition="!Skin.hasSetting(Enable.ExtendedInfo)">DefaultCast</include>
+			<include condition="Skin.hasSetting(Enable.ExtendedInfo)">CustomCast</include>
+        </control>
+        
 		<control type="group">
 			<visible>Control.HasFocus(10)</visible>
 			<include>VisibleFadeEffectDelay</include>

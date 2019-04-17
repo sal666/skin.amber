@@ -118,7 +118,7 @@
 			</control>
 			<control type="group" id="9100">
 				<!-- 9100 Middle panel -->
-				<!--9000 2-->
+				<!--9000 2 General Options -->
 				<control type="panel" id="9102">
 					<visible>Container(9000).HasFocus(2)</visible>
 					<onright>500</onright>
@@ -175,7 +175,7 @@
 						</item>
 					</content>
 				</control>
-				<!--9000 10-->
+				<!--9000 11 Media Views Options -->
 				<control type="panel" id="9111">
 					<visible>Container(9000).HasFocus(11)</visible>
 					<onright>500</onright>
@@ -255,7 +255,7 @@
 					</content>
 				</control>
 				
-				<!-- 9112 - Dependencies -->
+				<!-- 9000 12 - Manage Dependencies -->
 				<control type="grouplist" id="9112">
 					<visible>Container(9000).HasFocus(12)</visible>
 					<onright>500</onright>
@@ -310,41 +310,55 @@
                         <selected>System.HasAddon(script.tv.show.next.aired)</selected>
                     </control>
                     <control type="radiobutton" id="91127">
+                        <label>service.skin.widgets</label>
+                        <label2>$INFO[System.AddonVersion(service.skin.widgets)]        </label2>
+                        <onclick>Addon.OpenSettings(service.skin.widgets)</onclick>
+                        <onclick condition="!System.HasAddon(service.skin.widgets)">InstallAddon(service.skin.widgets)</onclick>
+                        <selected>System.HasAddon(service.skin.widgets)</selected>
+                    </control>					
+                    <control type="radiobutton" id="91128">
+                        <label>script.skin.helper.widgets</label>
+                        <label2>$INFO[System.AddonVersion(script.skin.helper.widgets)]        </label2>
+                        <onclick>Addon.OpenSettings(script.skin.helper.widgets)</onclick>
+                        <onclick condition="!System.HasAddon(service.skin.widgets)">InstallAddon(script.skin.helper.widgets)</onclick>
+                        <selected>System.HasAddon(script.skin.helper.widgets)</selected>
+                    </control>					
+                    <control type="radiobutton" id="91129">
                         <label>script.artwork.beef</label>
                         <label2>$INFO[System.AddonVersion(script.artwork.beef)]        </label2>
                         <onclick>Addon.OpenSettings(script.artwork.beef)</onclick>
                         <onclick condition="!System.HasAddon(script.artwork.beef)">InstallAddon(script.artwork.beef)</onclick>
                         <selected>System.HasAddon(script.artwork.beef)</selected>
                     </control>
-                    <control type="radiobutton" id="91128">
+                    <control type="radiobutton" id="911210">
                         <label>script.extendedinfo</label>
                         <label2>$INFO[System.AddonVersion(script.extendedinfo)]        </label2>
                         <onclick>Addon.OpenSettings(script.extendedinfo)</onclick>
                         <onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
                         <selected>System.HasAddon(script.extendedinfo)</selected>
                     </control>
-                    <control type="radiobutton" id="91129">
+                    <control type="radiobutton" id="911211">
                         <label>script.cu.lrclyrics</label>
                         <label2>$INFO[System.AddonVersion(script.cu.lrclyrics)]        </label2>
                         <onclick>Addon.OpenSettings(script.cu.lrclyrics)</onclick>
                         <onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
                         <selected>System.HasAddon(script.cu.lrclyrics)</selected>
                     </control>
-                    <control type="radiobutton" id="911210">
+                    <control type="radiobutton" id="911212">
                         <label>script.artistslideshow</label>
                         <label2>$INFO[System.AddonVersion(script.artistslideshow)]        </label2>
                         <onclick>Addon.OpenSettings(script.artistslideshow)</onclick>
                         <onclick condition="!System.HasAddon(script.artistslideshow)">InstallAddon(script.artistslideshow)</onclick>
                         <selected>System.HasAddon(script.artistslideshow)</selected>
                     </control>					
-                    <control type="radiobutton" id="911211">
+                    <control type="radiobutton" id="911213">
                         <label>plugin.video.specialfeatures</label>
                         <label2>$INFO[System.AddonVersion(plugin.video.specialfeatures)]        </label2>
                         <onclick>Addon.OpenSettings(plugin.video.specialfeatures)</onclick>
                         <onclick condition="!System.HasAddon(plugin.video.specialfeatures)">InstallAddon(plugin.video.specialfeatures)</onclick>
                         <selected>System.HasAddon(plugin.video.specialfeatures)</selected>
                     </control>
-                    <control type="radiobutton" id="911212">
+                    <control type="radiobutton" id="911214">
                         <label>service.upnext</label>
                         <label2>$INFO[System.AddonVersion(service.upnext)]        </label2>
                         <onclick>Addon.OpenSettings(service.upnext)</onclick>
@@ -353,7 +367,7 @@
                     </control>					
 				</control>				
 				
-				<!-- 9000 3 -->
+				<!-- 9000 3 Home Menu Options -->
 				<control type="group">
 					<visible>Container(9000).HasFocus(3)</visible>
 					<control type="panel" id="9103">
@@ -371,36 +385,23 @@
 								<thumb fallback="special://skin/backgrounds/Default.jpg">$INFO[Skin.String(Default.Background)]</thumb>
 								<onclick>noop</onclick>
 							</item>
-							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="21"/>
-								<param name="customhomeid" value="1"/>
-							</include>
-							<include content="HomeSettingItem">
-								<param name="itemid" value="1"/>
-								<param name="itemlabel" value="$LOCALIZE[1]"/>
-								<param name="area" value="Pictures"/>
-							</include>
-							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="22"/>
-								<param name="customhomeid" value="2"/>
-							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="2"/>
 								<param name="itemlabel" value="$LOCALIZE[24001]"/>
 								<param name="area" value="Addons"/>
-							</include>
-							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="23"/>
-								<param name="customhomeid" value="3"/>
-							</include>
+							</include>                            
 							<include content="HomeSettingItem">
 								<param name="itemid" value="3"/>
 								<param name="itemlabel" value="$LOCALIZE[3]"/>
 								<param name="area" value="Videos"/>
+							</include>                            
+							<include content="CustomHomeSettingItem">
+								<param name="itemid" value="21"/>
+								<param name="customhomeid" value="1"/>
 							</include>
 							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="24"/>
-								<param name="customhomeid" value="4"/>
+								<param name="itemid" value="22"/>
+								<param name="customhomeid" value="2"/>
 							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="4"/>
@@ -408,14 +409,23 @@
 								<param name="area" value="Movies"/>
 							</include>
 							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="25"/>
-								<param name="customhomeid" value="5"/>
+								<param name="itemid" value="23"/>
+								<param name="customhomeid" value="3"/>
+							</include>
+							<include content="CustomHomeSettingItem">
+								<param name="itemid" value="24"/>
+								<param name="customhomeid" value="4"/>
 							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="5"/>
 								<param name="itemlabel" value="$LOCALIZE[20343]"/>
 								<param name="area" value="TVShows"/>
 							</include>
+							<include content="CustomHomeSettingItem">
+								<param name="itemid" value="25"/>
+								<param name="customhomeid" value="5"/>
+							</include>
+
 							<include content="CustomHomeSettingItem">
 								<param name="itemid" value="26"/>
 								<param name="customhomeid" value="6"/>
@@ -429,24 +439,42 @@
 								<param name="itemid" value="27"/>
 								<param name="customhomeid" value="7"/>
 							</include>
+							<include content="CustomHomeSettingItem">
+								<param name="itemid" value="28"/>
+								<param name="customhomeid" value="8"/>
+							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="7"/>
 								<param name="itemlabel" value="$LOCALIZE[20389]"/>
 								<param name="area" value="MusicVideos"/>
 							</include>
+							<include content="CustomHomeSettingItem">
+								<param name="itemid" value="29"/>
+								<param name="customhomeid" value="9"/>
+							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="8"/>
 								<param name="itemlabel" value="$LOCALIZE[19020]"/>
-								<param name="area" value="Pvr"/>
+								<param name="area" value="TV"/>
 							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="9"/>
 								<param name="itemlabel" value="$LOCALIZE[19021]"/>
 								<param name="area" value="Radio"/>
 							</include>
+							<include content="HomeSettingItem">
+								<param name="itemid" value="1"/>
+								<param name="itemlabel" value="$LOCALIZE[1]"/>
+								<param name="area" value="Pictures"/>
+							</include>
 							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="28"/>
-								<param name="customhomeid" value="8"/>
+								<param name="itemid" value="30"/>
+								<param name="customhomeid" value="10"/>
+							</include>
+							<include content="HomeSettingItem">
+								<param name="itemid" value="16"/>
+								<param name="itemlabel" value="$LOCALIZE[15016]"/>
+								<param name="area" value="Games"/>
 							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="10"/>
@@ -454,26 +482,32 @@
 								<param name="area" value="Favourites"/>
 							</include>
 							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="29"/>
-								<param name="customhomeid" value="9"/>
+								<param name="itemid" value="31"/>
+								<param name="customhomeid" value="11"/>
 							</include>
 							<include content="HomeSettingItem">
 								<param name="itemid" value="12"/>
 								<param name="itemlabel" value="$LOCALIZE[427]"/>
 								<param name="area" value="DVD"/>
 							</include>
+							<include content="HomeSettingItem">
+								<param name="itemid" value="100"/>
+								<param name="itemlabel" value="$LOCALIZE[137]"/>
+								<param name="area" value="Search"/>
+                                <param name="itemvisibility" value="System.HasAddon(script.globalsearch) + Skin.HasSetting(Enable.GlobalSearch)"/>
+							</include>
 							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="30"/>
-								<param name="customhomeid" value="10"/>
-							</include>							
+								<param name="itemid" value="32"/>
+								<param name="customhomeid" value="12"/>
+							</include>                            
 							<include content="HomeSettingItem">
 								<param name="itemid" value="11"/>
 								<param name="itemlabel" value="$LOCALIZE[8]"/>
 								<param name="area" value="Weather"/>
 							</include>
 							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="31"/>
-								<param name="customhomeid" value="11"/>
+								<param name="itemid" value="33"/>
+								<param name="customhomeid" value="13"/>
 							</include>							
 							<item id="13" description="Settings Availability">
 								<label>$LOCALIZE[5]</label>
@@ -482,26 +516,13 @@
 								<thumb fallback="special://skin/backgrounds/Settings.jpg">$INFO[Skin.String(Settings.Background)]</thumb>
 							</item>
 							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="32"/>
-								<param name="customhomeid" value="12"/>
+								<param name="itemid" value="34"/>
+								<param name="customhomeid" value="14"/>
 							</include>							
 							<include content="HomeSettingItem">
 								<param name="itemid" value="14"/>
 								<param name="itemlabel" value="$LOCALIZE[13009]"/>
 								<param name="area" value="Quit"/>
-							</include>
-							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="33"/>
-								<param name="customhomeid" value="13"/>
-							</include>							
-							<include content="HomeSettingItem">
-								<param name="itemid" value="16"/>
-								<param name="itemlabel" value="$LOCALIZE[15016]"/>
-								<param name="area" value="Games"/>
-							</include>
-							<include content="CustomHomeSettingItem">
-								<param name="itemid" value="34"/>
-								<param name="customhomeid" value="14"/>
 							</include>
 							<include content="CustomHomeSettingItem">
 								<param name="itemid" value="35"/>
@@ -512,9 +533,9 @@
 					<control type="group" id="9203">
 						<control type="label">
 							<posx>1217</posx>
-							<posy>130</posy>
+							<posy>90</posy>
 							<width>592</width>
-							<height>45</height>
+							<height>30</height>
 							<align>center</align>
 							<textcolor>Highlight</textcolor>
 							<label>$INFO[Container(9103).ListItem.Label,[B],[/B]]</label>
@@ -548,29 +569,33 @@
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="10"/>
+                                    <param name="optid" value="1"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Pictures.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(1)"/>
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="20"/>
+                                    <param name="optid" value="2"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Addons.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(2)"/>
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="30"/>
+                                    <param name="optid" value="3"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Videos.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(3)"/>
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="40"/>
+                                    <param name="optid" value="4"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Movies.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(4)"/>
 								</include>
-								<item id="41" description="Movies entry points">
+								<item id="42" description="Movies entry points">
 									<label>$LOCALIZE[31507]</label>
 									<label2 fallback="31502">$VAR[MovieEntryPointLabel2]</label2>
 									<onclick>Skin.SelectBool(20342, 31502|MovieEntry.All, 20386|MovieEntry.RecentlyAdded, 135|MovieEntry.Genres, 136|MovieEntry.Playlists, 744|MovieEntry.Files, 15100|MovieEntry.Library)</onclick>
@@ -578,11 +603,12 @@
 								</item>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="50"/>
+                                    <param name="optid" value="5"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="TVShows.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(5)"/>
 								</include>
-								<item id="51" description="TV Show entry points">
+								<item id="52" description="TV Show entry points">
 									<label>$LOCALIZE[31507]</label>
 									<label2 fallback="31499">$VAR[TVShowEntryPointLabel2]</label2>
 									<onclick>Skin.SelectBool(20343, 31499|TVShowEntry.All, 20387|TVShowEntry.RecentlyAdded, 135|TVShowEntry.Genres, 136|TVShowEntry.Playlists, 744|TVShowEntry.Files, 15100|TVShowEntry.Library)</onclick>
@@ -590,11 +616,12 @@
 								</item>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="60"/>
+                                    <param name="optid" value="6"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Music.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(6)"/>
 								</include>
-								<item id="61" description="Music entry points">
+								<item id="62" description="Music entry points">
 									<label>$LOCALIZE[31507]</label>
 									<label2 fallback="133">$VAR[MusicEntryPointLabel2]</label2>
 									<onclick>Skin.SelectBool(2, 133|MusicEntry.Artists, 132|MusicEntry.Albums, 359|MusicEntry.RecentlyAdded, 136|MusicEntry.Playlists, 744|MusicEntry.Files, 135|MusicEntry.Genres)</onclick>
@@ -602,17 +629,19 @@
 								</item>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="70"/>
+                                    <param name="optid" value="14"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="MusicVideos.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(7)"/>
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="80"/>
+                                    <param name="optid" value="12"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="TV.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(8)"/>
 								</include>
-								<item id="81" description="TV entry points">
+								<item id="82" description="Live TV entry points">
 									<label>$LOCALIZE[31507]</label>
 									<label2 fallback="19019">$VAR[TVEntryPointLabel2]</label2>
 									<onclick>Skin.SelectBool(31500, 19019|TVEntry.Channels, 22020|TVEntry.Guide, 19163|TVEntry.Recordings)</onclick>
@@ -620,11 +649,12 @@
 								</item>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="90"/>
+                                    <param name="optid" value="13"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Radio.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(9)"/>
 								</include>
-								<item id="91" description="Radio entry points">
+								<item id="92" description="Radio entry points">
 									<label>$LOCALIZE[31507]</label>
 									<label2 fallback="19019">$VAR[RadioEntryPointLabel2]</label2>
 									<onclick>Skin.SelectBool(31509, 19019|RadioEntry.Channels, 22020|RadioEntry.Guide, 19163|RadioEntry.Recordings)</onclick>
@@ -632,18 +662,21 @@
 								</item>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="100"/>
+                                    <param name="optid" value="7"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Favourites.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(10)"/>
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="120"/>
+                                    <param name="optid" value="8"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="DVD.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(12)"/>
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="110"/>
+                                    <param name="optid" value="15"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Weather.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(11)"/>
@@ -657,61 +690,73 @@
 								</item>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="140"/>
+                                    <param name="optid" value="11"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Quit.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(14)"/>
 								</include>
-								<item id="141" description="QuitAction">
+								<item id="142" description="QuitAction">
 									<label>$LOCALIZE[31989]</label>
 									<label2 fallback="31988">$VAR[QuitLabel2]</label2>
 									<onclick>ActivateWindow(1114)</onclick>
 									<visible>Container(9103).HasFocus(14)</visible>
 								</item>
 								<include content="YesNoSettingItem">
-									<param name="itemid" value="142"/>
+									<param name="itemid" value="143"/>
 									<param name="itemlabel" value="$LOCALIZE[31955] $LOCALIZE[13009]"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(14) + String.IsEmpty(Skin.String(shutdown))"/>
 									<param name="skinsetting" value="QuitMenu_Hide_Quit"/>
 								</include>
 								<include content="YesNoSettingItem">
-									<param name="itemid" value="143"/>
+									<param name="itemid" value="144"/>
 									<param name="itemlabel" value="$LOCALIZE[31955] $LOCALIZE[13011]"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(14) + String.IsEmpty(Skin.String(shutdown))"/>
 									<param name="skinsetting" value="QuitMenu_Hide_Sleep"/>
 								</include>
 								<include content="YesNoSettingItem">
-									<param name="itemid" value="144"/>
+									<param name="itemid" value="145"/>
 									<param name="itemlabel" value="$LOCALIZE[31955] $LOCALIZE[13005]"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(14) + String.IsEmpty(Skin.String(shutdown))"/>
 									<param name="skinsetting" value="QuitMenu_Hide_Shutdown"/>
 								</include>
 								<include content="YesNoSettingItem">
-									<param name="itemid" value="145"/>
+									<param name="itemid" value="146"/>
 									<param name="itemlabel" value="$LOCALIZE[31955] $LOCALIZE[13013]"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(14) + String.IsEmpty(Skin.String(shutdown))"/>
 									<param name="skinsetting" value="QuitMenu_Hide_Reboot"/>
 								</include>
 								<include content="YesNoSettingItem">
-									<param name="itemid" value="146"/>
+									<param name="itemid" value="147"/>
 									<param name="itemlabel" value="$LOCALIZE[31955] $LOCALIZE[5]"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(14) + String.IsEmpty(Skin.String(shutdown))"/>
 									<param name="skinsetting" value="QuitMenu_Hide_Settings"/>
 								</include>
 								<include content="YesNoSettingItem">
 									<param name="itemid" value="160"/>
+                                    <param name="optid" value="16"/>
 									<param name="itemlabel" value="$LOCALIZE[31115]"/>
 									<param name="skinsetting" value="Games.Hide"/>
 									<param name="itemvisibility" value="Container(9103).HasFocus(16)"/>
-								</include>								
+								</include>
+								<include content="YesNoSettingItem">
+									<param name="itemid" value="1000"/>
+                                    <param name="optid" value="100"/>
+									<param name="itemlabel" value="$LOCALIZE[31115]"/>
+									<param name="skinsetting" value="Search.Hide"/>
+									<param name="itemvisibility" value="Container(9103).HasFocus(100)"/>
+								</include>
 							</content>
 						</control>
 						<control type="group" id="9503">
 							<visible>Container(9103).HasFocus(21) | Container(9103).HasFocus(22) | Container(9103).HasFocus(23) | Container(9103).HasFocus(24) | Container(9103).HasFocus(25) | Container(9103).HasFocus(26) | Container(9103).HasFocus(27) | Container(9103).HasFocus(28) | Container(9103).HasFocus(29) | Container(9103).HasFocus(30) | Container(9103).HasFocus(31) | Container(9103).HasFocus(32) | Container(9103).HasFocus(33) | Container(9103).HasFocus(34) | Container(9103).HasFocus(35)</visible>
 							<left>1217</left>
-							<top>170</top>
+							<top>130</top>
 							<control type="label">
 								<label>$LOCALIZE[518]</label>
 								<textcolor>Highlight</textcolor>
+                                <font>ListDetails</font>
+                                <height>40</height>
+                                <top>10</top>
 							</control>
 							<control type="button" id="9513">
 								<top>60</top>
@@ -723,6 +768,8 @@
 								<onclick condition="System.HasAddon(script.favourites)">$VAR[9513.OnClick.1]</onclick>
 								<onclick condition="!System.HasAddon(script.favourites)">InstallAddon(script.favourites)</onclick>
 								<label>$VAR[9513.Path.1]</label>
+                                <font>ListDetails</font>
+                                <height>45</height>
 								<visible>!System.HasAddon(script.skinshortcuts) | !Skin.HasSetting(Enable.SkinShortcuts)</visible>
 							</control>
 							<control type="button" id="9513">
@@ -734,15 +781,19 @@
 								<onright>9103</onright>
 								<onclick>$VAR[9513.OnClick.2]</onclick>
 								<label>$VAR[9513.Path.2]</label>
+                                <font>ListDetails</font>
+                                <height>45</height>
 								<visible>System.HasAddon(script.skinshortcuts) + Skin.HasSetting(Enable.SkinShortcuts)</visible>
 							</control>
 							<control type="label">
-								<top>120</top>
+								<top>115</top>
 								<label>$LOCALIZE[21899]</label>
 								<textcolor>Highlight</textcolor>
+                                <font>ListDetails</font>
+                                <height>40</height>
 							</control>
 							<control type="button" id="9523">
-								<top>180</top>
+								<top>165</top>
 								<width>590</width>
 								<onup>9513</onup>
 								<ondown>9533</ondown>
@@ -751,10 +802,12 @@
 								<onclick condition="System.HasAddon(script.favourites)">$VAR[9523.OnClick.1]</onclick>
 								<onclick condition="!System.HasAddon(script.favourites)">InstallAddon(script.favourites)</onclick>
 								<label>$VAR[9523.Label.1]</label>
+                                <font>ListDetails</font>
+                                <height>45</height>
 								<visible>!System.HasAddon(script.skinshortcuts) | !Skin.HasSetting(Enable.SkinShortcuts)</visible>
 							</control>
 							<control type="button" id="9523">
-								<top>180</top>
+								<top>165</top>
 								<width>590</width>
 								<onup>9513</onup>
 								<ondown>9533</ondown>
@@ -762,16 +815,20 @@
 								<onright>9103</onright>
 								<onclick>$VAR[9523.OnClick.2]</onclick>
 								<label>$VAR[9523.Label.2]</label>
+                                <font>ListDetails</font>
+                                <height>45</height>
 								<visible>System.HasAddon(script.skinshortcuts) + Skin.HasSetting(Enable.SkinShortcuts)</visible>
 							</control>
 							<control type="label">
 								<visible>System.HasAddon(script.skinshortcuts) + Skin.HasSetting(Enable.SkinShortcuts)</visible>
-								<top>240</top>
+								<top>220</top>
 								<label>$LOCALIZE[31107]</label>
 								<textcolor>Highlight</textcolor>
+                                <font>ListDetails</font>
+                                <height>40</height>
 							</control>
 							<control type="button" id="9533">
-								<top>300</top>
+								<top>270</top>
 								<width>590</width>
 								<onup>9523</onup>
 								<ondown>9303</ondown>
@@ -779,6 +836,8 @@
 								<onright>9103</onright>
 								<onclick>$VAR[9533.OnClick.2]</onclick>
 								<label>$VAR[9533.Label.2]</label>
+                                <font>ListDetails</font>
+                                <height>45</height>
 								<visible>System.HasAddon(script.skinshortcuts) + Skin.HasSetting(Enable.SkinShortcuts)</visible>
 							</control>
 						</control>
@@ -890,6 +949,17 @@
 							<param name="itemlabel" value="$LOCALIZE[31920]"/>
 							<param name="skinsetting" value="Hide.RecentlyAdded"/>
 						</include>
+						<include content="YesNoSettingItemAddon">
+							<param name="itemid" value="100"/>
+							<param name="itemlabel" value="$LOCALIZE[31046]"/>
+							<param name="skinsetting" value="Use_Jarvis_Shelves"/>
+							<param name="addonpath" value="service.skin.widgets"/>
+						</include>
+						<item id="101" description="Configure service.skin.widgets">
+							<visible>System.HasAddon(service.skin.widgets) + !Skin.HasSetting(Hide.RecentlyAdded) + Skin.HasSetting(Use_Jarvis_Shelves)</visible>
+							<label> - $LOCALIZE[31964]</label>
+							<onclick>Addon.OpenSettings(service.skin.widgets)</onclick>
+						</item>						
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="1"/>
 							<param name="itemlabel" value="$LOCALIZE[31083]"/>
@@ -1011,12 +1081,6 @@
 							<param name="addonpath" value="script.globalsearch"/>
 						</include>
 						<include content="YesNoSettingItemAddon">
-							<param name="itemid" value="9"/>
-							<param name="itemlabel" value="$LOCALIZE[31937]"/>
-							<param name="skinsetting" value="Enable.NextUpNotifications"/>
-							<param name="addonpath" value="service.nextup.notification"/>
-						</include>
-						<include content="YesNoSettingItemAddon">
 							<param name="itemid" value="10"/>
 							<param name="itemlabel" value="$LOCALIZE[31936]"/>
 							<param name="skinsetting" value="Enable.SkinShortcuts"/>
@@ -1028,6 +1092,12 @@
 							<param name="skinsetting" value="Enable.SpecialFeatures"/>
 							<param name="addonpath" value="plugin.video.specialfeatures"/>
 						</include>						
+						<include content="YesNoSettingItemAddon">
+							<param name="itemid" value="12"/>
+							<param name="itemlabel" value="$LOCALIZE[32015]"/>
+							<param name="skinsetting" value="Enable.ExtendedInfo"/>
+							<param name="addonpath" value="script.extendedinfo"/>
+						</include>                        
 						<include content="InstallAddonItem">
 							<param name="itemid" value="3"/>
 							<param name="itemlabel" value="$LOCALIZE[31939]"/>
@@ -1238,181 +1308,193 @@
 							<param name="itemid" value="0"/>
 							<param name="itemlabel" value="$LOCALIZE[31084]"/>
 							<param name="skinsetting" value="Hide.Movies.Shelf.RecentlyAdded"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(3)+ !Skin.HasSetting(Hide.Movies.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(3)+ !Skin.HasSetting(Hide.Movies.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="1"/>
 							<param name="itemlabel" value="$LOCALIZE[31085]"/>
 							<param name="skinsetting" value="Hide.Movies.Shelf.Random"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(3)+ !Skin.HasSetting(Hide.Movies.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(3)+ !Skin.HasSetting(Hide.Movies.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="2"/>
 							<param name="itemlabel" value="$LOCALIZE[31088]"/>
 							<param name="skinsetting" value="Hide.Movies.Shelf.InProgress"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(3)+ !Skin.HasSetting(Hide.Movies.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(3)+ !Skin.HasSetting(Hide.Movies.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="10"/>
 							<param name="itemlabel" value="$LOCALIZE[31084]"/>
 							<param name="skinsetting" value="Hide.TVShow.Shelf.RecentlyAdded"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="11"/>
 							<param name="itemlabel" value="$LOCALIZE[31090]"/>
 							<param name="skinsetting" value="Hide.TVShow.Shelf.Unwatched"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="12"/>
 							<param name="itemlabel" value="$LOCALIZE[31089]"/>
 							<param name="skinsetting" value="Hide.TVShow.Shelf.InProgress"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="13"/>
 							<param name="itemlabel" value="$LOCALIZE[31101]"/>
 							<param name="skinsetting" value="Hide.TVShow.Shelf.Random"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="14"/>
 							<param name="itemlabel" value="$LOCALIZE[31106]"/>
 							<param name="skinsetting" value="Hide.TVShow.Shelf.InProgressShows"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
+						<include content="YesNoSettingItemAddon">
+							<param name="itemid" value="100"/>
+							<param name="itemlabel" value="$LOCALIZE[32012]"/>
+							<param name="skinsetting" value="Hide.TVShow.Shelf.NextAiringEpisodes"/>
+							<param name="addonpath" value="script.skin.helper.widgets"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>							
+						</include>
+						<item id="101" description="Configure script.skin.helper.widgets">
+							<visible>System.HasAddon(script.skin.helper.widgets) + Container(9105).HasFocus(4)+ !Skin.HasSetting(Hide.TVShow.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves) + !Skin.HasSetting(Hide.TVShow.Shelf.NextAiringEpisodes)</visible>
+							<label> - $LOCALIZE[31964]</label>
+							<onclick>Addon.OpenSettings(script.skin.helper.widgets)</onclick>
+						</item>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="20"/>
 							<param name="itemlabel" value="$LOCALIZE[31084]"/>
 							<param name="skinsetting" value="Hide.Music.Shelf.RecentlyAddedAlbums"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="21"/>
 							<param name="itemlabel" value="$LOCALIZE[31091]"/>
 							<param name="skinsetting" value="Hide.Music.Shelf.MostPlayedAlbums"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="22"/>
 							<param name="itemlabel" value="$LOCALIZE[31086]"/>
 							<param name="skinsetting" value="Hide.Music.Shelf.RandomAlbums"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="23"/>
 							<param name="itemlabel" value="$LOCALIZE[31092]"/>
 							<param name="skinsetting" value="Hide.Music.Shelf.MostPlayedSongs"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="24"/>
 							<param name="itemlabel" value="$LOCALIZE[31087]"/>
 							<param name="skinsetting" value="Hide.Music.Shelf.RandomArtists"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(6)+ !Skin.HasSetting(Hide.Music.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="30"/>
 							<param name="itemlabel" value="$LOCALIZE[31084]"/>
 							<param name="skinsetting" value="Hide.MusicVideos.Shelf.RecentlyAdded"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(7)+ !Skin.HasSetting(Hide.MusicVideos.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(7)+ !Skin.HasSetting(Hide.MusicVideos.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="31"/>
 							<param name="itemlabel" value="$LOCALIZE[31085]"/>
 							<param name="skinsetting" value="Hide.MusicVideos.Shelf.Random"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(7)+ !Skin.HasSetting(Hide.MusicVideos.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(7)+ !Skin.HasSetting(Hide.MusicVideos.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="32"/>
 							<param name="itemlabel" value="$LOCALIZE[31093]"/>
 							<param name="skinsetting" value="Hide.MusicVideos.Shelf.Unwatched"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(7)+ !Skin.HasSetting(Hide.MusicVideos.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(7)+ !Skin.HasSetting(Hide.MusicVideos.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="40"/>
 							<param name="itemlabel" value="$LOCALIZE[31094]"/>
 							<param name="skinsetting" value="Hide.TV.Shelf.Channels"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="41"/>
 							<param name="itemlabel" value="$LOCALIZE[31095]"/>
 							<param name="skinsetting" value="Hide.TV.Shelf.Recordings"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="42"/>
 							<param name="itemlabel" value="$LOCALIZE[31102]"/>
 							<param name="skinsetting" value="Hide.TV.Widget.NowRecording"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="43"/>
 							<param name="itemlabel" value="$LOCALIZE[31103]"/>
 							<param name="skinsetting" value="Hide.TV.Widget.NextRecording"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(8)+ !Skin.HasSetting(Hide.TV.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="50"/>
 							<param name="itemlabel" value="$LOCALIZE[31094]"/>
 							<param name="skinsetting" value="Hide.Radio.Shelf.Channels"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="51"/>
 							<param name="itemlabel" value="$LOCALIZE[31095]"/>
 							<param name="skinsetting" value="Hide.Radio.Shelf.Recordings"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="52"/>
 							<param name="itemlabel" value="$LOCALIZE[31102]"/>
 							<param name="skinsetting" value="Hide.Radio.Widget.NowRecording"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="53"/>
 							<param name="itemlabel" value="$LOCALIZE[31103]"/>
 							<param name="skinsetting" value="Hide.Radio.Widget.NextRecording"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(9)+ !Skin.HasSetting(Hide.Radio.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="60"/>
 							<param name="itemlabel" value="$LOCALIZE[31096]"/>
 							<param name="skinsetting" value="Shelf.Addons.Videos"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="61"/>
 							<param name="itemlabel" value="$LOCALIZE[31097]"/>
 							<param name="skinsetting" value="Shelf.Addons.Music"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="62"/>
 							<param name="itemlabel" value="$LOCALIZE[31098]"/>
 							<param name="skinsetting" value="Shelf.Addons.Pictures"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="63"/>
 							<param name="itemlabel" value="$LOCALIZE[31099]"/>
 							<param name="skinsetting" value="Shelf.Addons.Programs"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="65"/>
 							<param name="itemlabel" value="$LOCALIZE[32002]"/>
 							<param name="skinsetting" value="Shelf.Addons.Games"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>						
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="64"/>
 							<param name="itemlabel" value="$LOCALIZE[31100]"/>
 							<param name="skinsetting" value="Shelf.Addons.Favourites"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(12)+ !Skin.HasSetting(Shelf.Addons) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<item id="70" description="ADDONS">
 							<visible>!Skin.HasSetting(Shelf.Addons) + !Skin.HasSetting(Hide.RecentlyAdded) + !Skin.HasSetting(Shelf.Addons.Favourites) + Container(9105).HasFocus(12)</visible>
@@ -1478,13 +1560,13 @@
 							<param name="itemid" value="80"/>
 							<param name="itemlabel" value="$LOCALIZE[31104]"/>
 							<param name="skinsetting" value="Hide.Weather.Shelf.Hourly"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(10)+ !Skin.HasSetting(Hide.Weather.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(10)+ !Skin.HasSetting(Hide.Weather.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 						<include content="YesNoSettingItem">
 							<param name="itemid" value="81"/>
 							<param name="itemlabel" value="$LOCALIZE[31105]"/>
 							<param name="skinsetting" value="Hide.Weather.Shelf.Daily"/>
-							<param name="itemvisibility" value="Container(9105).HasFocus(10)+ !Skin.HasSetting(Hide.Weather.Shelf)"/>
+							<param name="itemvisibility" value="Container(9105).HasFocus(10)+ !Skin.HasSetting(Hide.Weather.Shelf) + !Skin.HasSetting(Use_Jarvis_Shelves)"/>
 						</include>
 					</content>
 				</control>

@@ -740,7 +740,7 @@ msgid "Enable Skin Shortcuts"
 msgstr ""
 
 msgctxt "#31937"
-msgid "Enable Next Up Notifications"
+msgid "Enable Up Next Notifications"
 msgstr ""
 
 msgctxt "#31938"
@@ -1027,4 +1027,36 @@ msgstr ""
 
 msgctxt "#32011"
 msgid "Airs"
+msgstr ""
+
+msgctxt "#32012"
+msgid "Hide Next Airing Episodes"
+msgstr ""
+
+msgctxt "#32013"
+msgid "Next Airing Episodes"
+msgstr ""
+
+msgctxt "#32014"
+msgid "Search Results for: "
+msgstr ""
+
+msgctxt "#32015"
+msgid "Enable ExtendedInfo"
+msgstr ""
+
+msgctxt "#32016"
+msgid "Extended Info"
+msgstr ""
+
+msgctxt "#32017"
+msgid "Search in Local Library"
+msgstr ""
+
+msgctxt "#32018"
+msgid "Show Extended Info"
+msgstr ""
+
+msgctxt "#32019"
+msgid "Make Startup Menu Option"
 msgstr ""
